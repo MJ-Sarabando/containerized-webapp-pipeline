@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containerized WebApp Pipeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .api-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .api-section h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .api-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .response {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online {
+            background: #4ade80;
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .social-links .btn {
+            margin: 0.5rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .api-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-links .btn {
+                display: block;
+                margin: 0.5rem auto;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐳 Containerized WebApp Pipeline</h1>
+            <p>Aplicação demonstrativa com containerização e pipeline automatizado</p>
+            <div style="margin-top: 1rem;">
+                <span class="status-indicator status-online"></span>
+                <span>Sistema Online</span>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>🐳 Docker</h3>
+                <p>Aplicação containerizada com Dockerfile otimizado, multi-stage build e health checks para máxima eficiência e segurança.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🔄 CI/CD Pipeline</h3>
+                <p>GitHub Actions com testes automáticos, build de imagens, scans de segurança e deploy automatizado.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🧪 Testes Automatizados</h3>
+                <p>Suite completa de testes unitários e de integração com cobertura de código para garantir qualidade.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🔒 Segurança</h3>
+                <p>Scans de vulnerabilidades, utilizador non-root, audit de dependências e boas práticas de segurança.</p>
+            </div>
+        </div>
+
+        <div class="api-section">
+            <h2>🚀 API Endpoints</h2>
+            <div class="api-buttons">
+                <button class="btn" onclick="testAPI('/api/health')">Health Check</button>
+                <button class="btn" onclick="testAPI('/api/users')">Listar Utilizadores</button>
+                <button class="btn" onclick="window.open('https://github.com/MJ-Sarabando/containerized-webapp-pipeline', '_blank')">Ver no GitHub</button>
+            </div>
+            <div id="response" class="response" style="display: none;"></div>
+        </div>
+
+        <div class="footer">
+            <p>Desenvolvido com ❤️ por <strong>Maria João Sarabando</strong></p>
+            <p>Node.js • Docker • GitHub Actions • CI/CD</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/MJ-Sarabando" target="_blank" class="btn">
+                    🐙 GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/mariajoaosarabando" target="_blank" class="btn">
+                    💼 LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function testAPI(endpoint) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.style.display = 'block';
+            responseDiv.textContent = 'A carregar...';
+
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                
+                responseDiv.textContent = `Status: ${response.status}\nEndpoint: ${endpoint}\n\nResposta:\n${JSON.stringify(data, null, 2)}`;
+            } catch (error) {
+                responseDiv.textContent = `Erro: ${error.message}`;
+            }
+        }
+
+        // Verificar status da aplicação ao carregar
+        window.addEventListener('load', () => {
+            testAPI('/api/health');
+        });
+    </script>
+</body>
+</html>

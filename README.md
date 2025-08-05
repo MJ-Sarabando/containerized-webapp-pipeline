@@ -1,234 +1,234 @@
 # 🐳 Docker + CI/CD App
 
-Uma aplicação web simples que demonstra competências em **Docker**, **CI/CD**, e **DevOps** usando tecnologias modernas.
+A simple web application that demonstrates expertise in **Docker**, **CI/CD**, and **DevOps** using modern technologies.
 
 ![Pipeline Status](https://github.com/MJ-Sarabando/docker-cicd-app/workflows/CI/CD%20Pipeline/badge.svg)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Este projeto demonstra:
-- **Containerização** com Docker e docker-compose
-- **Pipeline CI/CD** completo com GitHub Actions
-- **Testes automatizados** e verificações de qualidade
-- **Boas práticas de segurança** e DevOps
-- **Deploy automatizado** (simulado)
+This project demonstrates:
+- **Containerization** with Docker and docker-compose
+- **Complete CI/CD pipeline** with GitHub Actions
+- **Automated testing** and quality checks
+- **Security best practices** and DevOps
+- **Automated deployment** (simulated)
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
 ```
-├── app.js                     # Aplicação Node.js/Express
-├── package.json               # Dependências e scripts
-├── Dockerfile                 # Containerização
-├── docker-compose.yml         # Orquestração multi-container
-├── .github/workflows/         # Pipeline CI/CD
+├── app.js                     # Node.js/Express application
+├── package.json               # Dependencies and scripts
+├── Dockerfile                 # Containerization
+├── docker-compose.yml         # Multi-container orchestration
+├── .github/workflows/         # CI/CD pipeline
 │   └── ci-cd.yml
-├── tests/                     # Testes automatizados
+├── tests/                     # Automated tests
 │   └── app.test.js
-├── public/                    # Interface web
+├── public/                    # Web interface
 │   └── index.html
-├── nginx.conf                 # Configuração Nginx
-└── README.md                  # Esta documentação
+├── nginx.conf                 # Nginx configuration
+└── README.md                  # This documentation
 ```
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
+### Prerequisites
 - Docker & Docker Compose
-- Node.js 18+ (para desenvolvimento local)
+- Node.js 18+ (for local development)
 - Git
 
-### 1. Clonar o repositório
+### 1. Clone the repository
 ```bash
 git clone https://github.com/MJ-Sarabando/docker-cicd-app.git
 cd docker-cicd-app
 ```
 
-### 2. Executar com Docker Compose
+### 2. Run with Docker Compose
 ```bash
-# Desenvolvimento
+# Development
 docker-compose up --build
 
-# Produção (com Nginx)
+# Production (with Nginx)
 docker-compose --profile production up --build -d
 
-# Parar serviços
+# Stop services
 docker-compose down
 ```
 
-### 3. Aceder à aplicação
-- **Aplicação**: http://localhost:3000
+### 3. Access the application
+- **Application**: http://localhost:3000
 - **API Health**: http://localhost:3000/api/health
 - **API Users**: http://localhost:3000/api/users
-- **Nginx** (produção): http://localhost:80
+- **Nginx** (production): http://localhost:80
 
-## 🛠️ Desenvolvimento Local
+## 🛠️ Local Development
 
-### Sem Docker
+### Without Docker
 ```bash
-# Instalar dependências
+# Install dependencies
 npm install
 
-# Executar em modo desenvolvimento
+# Run in development mode
 npm run dev
 
-# Executar testes
+# Run tests
 npm test
 
-# Executar testes com cobertura
+# Run tests with coverage
 npm run test:coverage
 ```
 
-### Com Docker
+### With Docker
 ```bash
-# Build da imagem
+# Build image
 docker build -t docker-cicd-app .
 
-# Executar container
+# Run container
 docker run -p 3000:3000 docker-cicd-app
 
-# Executar testes no container
+# Run tests in container
 docker run --rm docker-cicd-app npm test
 ```
 
-## 🧪 Testes
+## 🧪 Testing
 
-O projeto inclui uma suite completa de testes:
+The project includes a comprehensive test suite:
 
 ```bash
-# Executar todos os testes
+# Run all tests
 npm test
 
-# Testes em modo watch
+# Tests in watch mode
 npm run test:watch
 
-# Cobertura de código
+# Code coverage
 npm run test:coverage
 ```
 
-### Tipos de testes incluídos:
-- **Testes unitários**: Funções utilitárias
-- **Testes de integração**: Endpoints da API
-- **Testes de performance**: Tempo de resposta
-- **Health checks**: Verificação de saúde da aplicação
+### Types of tests included:
+- **Unit tests**: Utility functions
+- **Integration tests**: API endpoints
+- **Performance tests**: Response time
+- **Health checks**: Application health verification
 
-## 🔄 Pipeline CI/CD
+## 🔄 CI/CD Pipeline
 
-O pipeline GitHub Actions executa automaticamente em:
-- **Push** para `main` ou `develop`
-- **Pull requests** para `main`
-- **Execução manual** (workflow_dispatch)
+The GitHub Actions pipeline runs automatically on:
+- **Push** to `main` or `develop`
+- **Pull requests** to `main`
+- **Manual execution** (workflow_dispatch)
 
-### Stages do Pipeline:
+### Pipeline Stages:
 
-#### 1. 🧪 Testes e Qualidade
-- Instalação de dependências
+#### 1. 🧪 Testing and Quality
+- Dependency installation
 - Linting (ESLint)
-- Execução de testes unitários
-- Cobertura de código
-- Upload para Codecov
+- Unit test execution
+- Code coverage
+- Upload to Codecov
 
-#### 2. 🐳 Build Docker
-- Build multi-arquitetura (AMD64/ARM64)
-- Push para GitHub Container Registry
-- Cache otimizado
-- Tagging automático
+#### 2. 🐳 Docker Build
+- Multi-architecture build (AMD64/ARM64)
+- Push to GitHub Container Registry
+- Optimized caching
+- Automatic tagging
 
-#### 3. 🔒 Segurança
-- Audit de dependências NPM
-- Scan de vulnerabilidades (Trivy)
-- Upload para GitHub Security
+#### 3. 🔒 Security
+- NPM dependency audit
+- Vulnerability scanning (Trivy)
+- Upload to GitHub Security
 
-#### 4. 🚀 Deploy (Simulado)
-- Deploy apenas em `main`
-- Verificação de saúde pós-deploy
-- Notificações de sucesso
+#### 4. 🚀 Deploy (Simulated)
+- Deploy only on `main`
+- Post-deploy health verification
+- Success notifications
 
 #### 5. ⏪ Rollback
-- Executado em caso de falha
-- Reversão automática
+- Executed on failure
+- Automatic rollback
 
 ## 🐳 Docker
 
 ### Dockerfile Features
-- **Multi-stage build** para otimização
-- **Utilizador non-root** para segurança
-- **Health checks** integrados
-- **Imagem Alpine** (menor tamanho)
-- **Cache de dependências** otimizado
+- **Multi-stage build** for optimization
+- **Non-root user** for security
+- **Integrated health checks**
+- **Alpine image** (smaller size)
+- **Optimized dependency caching**
 
 ### Docker Compose Services
-- **app**: Aplicação principal Node.js
-- **redis**: Cache (demonstração multi-container)
-- **nginx**: Reverse proxy (perfil produção)
+- **app**: Main Node.js application
+- **redis**: Cache (multi-container demonstration)
+- **nginx**: Reverse proxy (production profile)
 
-### Comandos úteis:
+### Useful commands:
 ```bash
-# Ver logs da aplicação
+# View application logs
 docker-compose logs -f app
 
-# Executar comando no container
+# Execute command in container
 docker-compose exec app sh
 
-# Verificar health status
+# Check health status
 docker-compose ps
 
-# Limpar volumes
+# Clean volumes
 docker-compose down -v
 ```
 
-## 🔒 Segurança
+## 🔒 Security
 
-### Medidas implementadas:
-- **Utilizador non-root** no container
-- **Scan de vulnerabilidades** automatizado
-- **Audit de dependências** no CI/CD
-- **Health checks** para monitorização
-- **Secrets management** com GitHub Secrets
-- **Multi-stage builds** para reduzir superfície de ataque
+### Implemented measures:
+- **Non-root user** in container
+- **Automated vulnerability scanning**
+- **Dependency audit** in CI/CD
+- **Health checks** for monitoring
+- **Secrets management** with GitHub Secrets
+- **Multi-stage builds** to reduce attack surface
 
-### Verificações de segurança:
+### Security checks:
 ```bash
-# Audit local de dependências
+# Local dependency audit
 npm audit
 
-# Scan com Trivy (se instalado)
+# Scan with Trivy (if installed)
 trivy fs .
 
-# Verificar imagem Docker
+# Check Docker image
 docker scout cves docker-cicd-app
 ```
 
-## 📊 Monitorização
+## 📊 Monitoring
 
 ### Health Checks
-- **Aplicação**: `/api/health`
-- **Docker**: Health check integrado
-- **Compose**: Health checks para todos os serviços
+- **Application**: `/api/health`
+- **Docker**: Integrated health check
+- **Compose**: Health checks for all services
 
-### Métricas disponíveis:
-- Status da aplicação
-- Timestamp da última verificação
-- Versão da aplicação
-- Informações do sistema
+### Available metrics:
+- Application status
+- Last check timestamp
+- Application version
+- System information
 
-## 🌐 Deploy
+## 🌐 Deployment
 
 ### GitHub Container Registry
-As imagens são automaticamente publicadas em:
+Images are automatically published to:
 ```
 ghcr.io/MJ_Sarabando/docker-cicd-app:latest
 ghcr.io/MJ_Sarabando/docker-cicd-app:main-<sha>
 ```
 
-### Deploy em produção (exemplo):
+### Production deployment (example):
 ```bash
-# Pull da imagem mais recente
+# Pull latest image
 docker pull ghcr.io/MJ_Sarabando/docker-cicd-app:latest
 
-# Executar em produção
+# Run in production
 docker run -d \
   --name docker-cicd-app-prod \
   -p 3000:3000 \
@@ -236,97 +236,97 @@ docker run -d \
   ghcr.io/MJ_Sarabando/docker-cicd-app:latest
 ```
 
-## 🛠️ Configuração
+## 🛠️ Configuration
 
-### Variáveis de Ambiente
+### Environment Variables
 ```bash
-# Aplicação
-NODE_ENV=production          # Ambiente de execução
-PORT=3000                    # Porta da aplicação
+# Application
+NODE_ENV=production          # Runtime environment
+PORT=3000                    # Application port
 
 # Docker
-DOCKER_BUILDKIT=1           # Build kit ativado
-COMPOSE_DOCKER_CLI_BUILD=1  # CLI build ativado
+DOCKER_BUILDKIT=1           # Build kit enabled
+COMPOSE_DOCKER_CLI_BUILD=1  # CLI build enabled
 ```
 
-### GitHub Secrets necessários:
-- `GITHUB_TOKEN`: Automático (push para registry)
-- `CODECOV_TOKEN`: Token do Codecov (opcional)
+### Required GitHub Secrets:
+- `GITHUB_TOKEN`: Automatic (push to registry)
+- `CODECOV_TOKEN`: Codecov token (optional)
 
-## 📝 Scripts Disponíveis
+## 📝 Available Scripts
 
 ```bash
-npm start          # Iniciar aplicação
-npm run dev        # Desenvolvimento com nodemon
-npm test           # Executar testes
-npm run test:watch # Testes em modo watch
-npm run test:coverage # Cobertura de código
+npm start          # Start application
+npm run dev        # Development with nodemon
+npm test           # Run tests
+npm run test:watch # Tests in watch mode
+npm run test:coverage # Code coverage
 ```
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-1. Fork o projeto
-2. Criar branch para feature (`git checkout -b feature/nova-feature`)
-3. Commit das alterações (`git commit -m 'Adicionar nova feature'`)
-4. Push para branch (`git push origin feature/nova-feature`)
-5. Abrir Pull Request
+1. Fork the project
+2. Create feature branch (`git checkout -b feature/new-feature`)
+3. Commit changes (`git commit -m 'Add new feature'`)
+4. Push to branch (`git push origin feature/new-feature`)
+5. Open Pull Request
 
 ### Guidelines:
-- Seguir convenções de código existentes
-- Adicionar testes para novas funcionalidades
-- Atualizar documentação quando necessário
-- Verificar que o pipeline CI/CD passa
+- Follow existing code conventions
+- Add tests for new functionalities
+- Update documentation when necessary
+- Ensure CI/CD pipeline passes
 
 ## 📋 Roadmap
 
-- [ ] Integração com base de dados (PostgreSQL)
-- [ ] Métricas com Prometheus/Grafana
-- [ ] Logging estruturado (Winston)
+- [ ] Database integration (PostgreSQL)
+- [ ] Metrics with Prometheus/Grafana
+- [ ] Structured logging (Winston)
 - [ ] Rate limiting
-- [ ] Autenticação JWT
-- [ ] Deploy em Kubernetes
-- [ ] Testes E2E com Cypress
+- [ ] JWT authentication
+- [ ] Kubernetes deployment
+- [ ] E2E tests with Cypress
 
 ## 🐛 Troubleshooting
 
-### Problemas comuns:
+### Common issues:
 
-**Container não inicia:**
+**Container won't start:**
 ```bash
-# Verificar logs
+# Check logs
 docker-compose logs app
 
-# Verificar health status
+# Check health status
 docker-compose ps
 ```
 
-**Testes falham:**
+**Tests failing:**
 ```bash
-# Limpar cache
+# Clear cache
 npm cache clean --force
 
-# Reinstalar dependências
+# Reinstall dependencies
 rm -rf node_modules package-lock.json
 npm install
 ```
 
-**Pipeline CI/CD falha:**
-- Verificar GitHub Secrets
-- Confirmar permissões do repository
-- Verificar sintaxe YAML
+**CI/CD pipeline fails:**
+- Check GitHub Secrets
+- Verify repository permissions
+- Check YAML syntax
 
-## 📚 Recursos Úteis
+## 📚 Useful Resources
 
 - [Docker Documentation](https://docs.docker.com/)
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
 - [Docker Security](https://docs.docker.com/engine/security/)
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Ver ficheiro [LICENSE](LICENSE) para mais detalhes.
+This project is under the MIT license. See [LICENSE](LICENSE) file for more details.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Maria Joao Sarabando**
 - GitHub: https://github.com/MJ-Sarabando
@@ -334,4 +334,4 @@ Este projeto está sob a licença MIT. Ver ficheiro [LICENSE](LICENSE) para mais
 
 ---
 
-⭐ **Se este projeto te ajudou, considera dar-lhe uma estrela!** ⭐
+⭐ **If this project helped you, consider giving it a star!** ⭐
